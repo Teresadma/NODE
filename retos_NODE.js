@@ -25,7 +25,7 @@ fs.writeFile("./objeto.json",objetoJSON, error => {
             if (err) {
               return console.log(err);
             }          
-            console.log(data);
+            console.log(JSON.parse(data));
           })
 });
 
