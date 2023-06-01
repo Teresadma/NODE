@@ -16,8 +16,7 @@ let objeto = {
     surname: "de Miguel",
     age: 26,
 }
-let objetoJSON = JSON.stringify(objeto)
-fs.writeFile("./objeto.json",objetoJSON, error => {
+fs.writeFile("./objeto.json",JSON.stringify(objeto), error => {
     if (error)
       console.log(error)
     else

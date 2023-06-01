@@ -24,7 +24,7 @@ function readConsole (callback){
     pregunta("Como te llamas?")
     .then ((respuesta) => {
         objeto3.name = respuesta;
-        pregunta("Como te apellidas?")
+         return pregunta("Como te apellidas?")
         .then((respuesta2) => {
             objeto3.surname = respuesta2;
             pregunta("Cuantos años tienes?")

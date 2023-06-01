@@ -2,8 +2,7 @@ const fs = require('fs');
 const { stringify } = require('querystring');
 
 function writeAndRead(path, obj) {    
-    let objetoJSON = JSON.stringify(obj)
-    fs.writeFile(path,objetoJSON, error => {
+    fs.writeFile(path,JSON.stringify(obj), error => {
         if (error)
         console.log(error)
         else

@@ -5,6 +5,6 @@ let myLib2 = require ("./readConsole");
 //     myLib.writeAndRead("./personita.json",objeto)
 // })
 
-myLib2.readConsole2(objeto => {
-    myLib.writeAndRead2("./personita2.json",objeto)
+myLib2.readConsole2(pepe => {
+    myLib.writeAndRead2("./personita2.json",pepe)
 })
