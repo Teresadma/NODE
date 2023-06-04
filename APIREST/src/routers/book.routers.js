@@ -1,0 +1,17 @@
+const {Router} = require ("express");
+const router = Router ();
+const bookCtrl = require ("../controller/book.controller");
+
+router.get("/", bookCtrl.getStart);
+
+router.get("/book", bookCtrl.getBook);
+
+// router.get("/book/:id", bookCtrl.getBookParams);
+
+router.post("/book", bookCtrl.postBook);
+
+router.put("/book", bookCtrl.putBook);
+
+router.delete("/book", bookCtrl.deleteBook);
+
+module.exports = router;
