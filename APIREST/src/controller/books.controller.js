@@ -1,6 +1,6 @@
 const Book = require('../models/book');
 
-const books = [];
+let books = [];
 
 function getStart (request, response){
     let respuesta = {error: true, codigo:200, mensaje: "Punto de inicio"};
@@ -41,9 +41,7 @@ function postBooks (request, response){
                             mensaje: 'Libro creado.', data: books};
                 response.send(respuesta);        
         }   
-}
-
-  
+}  
 
 function putBooks (request, response){
     let respuesta;
@@ -64,19 +62,36 @@ function putBooks (request, response){
         }
 }
 
-function deleteBooks (request, response){
-    let respuesta;
-    let id_book = request.body.id_book;
-    let deleteIndex = books.findIndex((book) => book.id_book === id_book)
-        if (deleteIndex !== -1) {
-            let deletedBook = books.splice(deleteIndex, 1)
-            respuesta = {error: false, codigo: 200,
-                        mensaje: "Libro borrado", data: deletedBook};
-        } else
-            respuesta = {error: true, codigo: 200,
-                        mensaje: "El libro no existe", data: null};
+// function deleteBooks (request, response){
+//     let respuesta;
+//     let id_book = request.body.id_book;
+//     let deleteIndex = books.findIndex((book) => book.id_book === id_book)
+//         if (deleteIndex !== -1) {
+//             let deletedBook = books.splice(deleteIndex, 1)
+//             respuesta = {error: false, codigo: 200,
+//                         mensaje: "Libro borrado", data: deletedBook};
+//         } else
+//             respuesta = {error: true, codigo: 200,
+//                         mensaje: "El libro no existe", data: null};
         
-    response.send(respuesta);
+//     response.send(respuesta);
+// }
+
+function deleteBooks(request, response)
+{
+    let respuesta;
+    let id = request.params.id_book;
+    let filtrado = books.filter(book => book.id_book != id);
+    if (filtrado.length != books.length) {
+        books = filtrado;
+        respuesta = {error: false, codigo: 200,
+                    mensaje: 'Libro borrado', data: books}
+    }
+    else
+        respuesta = {error: true, codigo: 200,
+                    mensaje: 'El libro no existe'};
+
+        response.send(respuesta);
 }
 
 
